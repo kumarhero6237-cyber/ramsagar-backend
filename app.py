@@ -66,7 +66,7 @@ def get_account_credentials(region: str) -> str:
     # 👇 YAHAN APNA UID & PASSWORD DALEN 👇
     # ==========================================
     if r == "IND":
-        return "uid=7887839629&password=B1F49F776917F64FFB14030D684E553696BFA1FDF1A7C33B0EE8B0F5A8A84CCA"
+        return "uid=YOUR_UID&password=YOUR_IND_PASSWORD"
     elif r == "BD":
         return "uid=YOUR_BD_UID&password=YOUR_BD_PASSWORD"
     elif r in {"BR", "US", "SAC", "ME"}:
