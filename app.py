@@ -284,48 +284,9 @@ async def GetAccountInformation(uid, unk, region, endpoint, max_retries=3):
     return None
 
 def format_response(data):
-    return {
-        "AccountInfo": {
-            "AccountAvatarId": data.get("basicInfo", {}).get("headPic"),
-            "AccountBPBadges": data.get("basicInfo", {}).get("badgeCnt"),
-            "AccountBPID": data.get("basicInfo", {}).get("badgeId"),
-            "AccountBannerId": data.get("basicInfo", {}).get("bannerId"),
-            "AccountCreateTime": data.get("basicInfo", {}).get("createAt"),
-            "AccountEXP": data.get("basicInfo", {}).get("exp"),
-            "AccountLastLogin": data.get("basicInfo", {}).get("lastLoginAt"),
-            "AccountLevel": data.get("basicInfo", {}).get("level"),
-            "AccountLikes": data.get("basicInfo", {}).get("liked"),
-            "AccountName": data.get("basicInfo", {}).get("nickname"),
-            "AccountRegion": data.get("basicInfo", {}).get("region"),
-            "AccountSeasonId": data.get("basicInfo", {}).get("seasonId"),
-            "AccountType": data.get("basicInfo", {}).get("accountType"),
-            "BrMaxRank": data.get("basicInfo", {}).get("maxRank"),
-            "BrRankPoint": data.get("basicInfo", {}).get("rankingPoints"),
-            "CsMaxRank": data.get("basicInfo", {}).get("csMaxRank"),
-            "CsRankPoint": data.get("basicInfo", {}).get("csRankingPoints"),
-            "EquippedWeapon": data.get("basicInfo", {}).get("weaponSkinShows", []),
-            "ReleaseVersion": data.get("basicInfo", {}).get("releaseVersion"),
-            "ShowBrRank": data.get("basicInfo", {}).get("showBrRank"),
-            "ShowCsRank": data.get("basicInfo", {}).get("showCsRank"),
-            "Title": data.get("basicInfo", {}).get("title"),
-        },
-        "AccountProfileInfo": {
-            "EquippedOutfit": data.get("profileInfo", {}).get("clothes", []),
-            "EquippedSkills": data.get("profileInfo", {}).get("equipedSkills", []),
-        },
-        "GuildInfo": {
-            "GuildCapacity": data.get("clanBasicInfo", {}).get("capacity"),
-            "GuildID": str(data.get("clanBasicInfo", {}).get("clanId")),
-            "GuildLevel": data.get("clanBasicInfo", {}).get("clanLevel"),
-            "GuildMember": data.get("clanBasicInfo", {}).get("memberNum"),
-            "GuildName": data.get("clanBasicInfo", {}).get("clanName"),
-            "GuildOwner": str(data.get("clanBasicInfo", {}).get("captainId")),
-        },
-        "captainBasicInfo": data.get("captainBasicInfo", {}),
-        "creditScoreInfo": data.get("creditScoreInfo", {}),
-        "petInfo": data.get("petInfo", {}),
-        "socialinfo": data.get("socialInfo", {}),
-    }
+    # Return the same raw JSON structure as INFO-API-SRC.
+    # No AccountInfo/AccountProfileInfo/GuildInfo reshaping is applied.
+    return data
 
 # ===============================
 # Routes
