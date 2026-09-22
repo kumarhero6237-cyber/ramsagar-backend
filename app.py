@@ -330,8 +330,12 @@ def format_response(data):
 # ===============================
 # Routes
 # ===============================
-@app.route('/get')
+@app.route('/uc-info')
 def get_account_info():
+    api_key = request.args.get('key', '')
+    if api_key != 'RAM-SAGAR':
+        return jsonify({"error": "Invalid or missing API key"}), 401
+
     uid = request.args.get('uid')
     if not uid:
         return jsonify({"error": "Please provide UID."}), 400
@@ -379,8 +383,8 @@ def home():
     return jsonify({
         "status": "running",
         "version": RELEASEVERSION,
-        "endpoint": "/get?uid=UID",
-        "example": "/get?uid=2084018498",
+        "endpoint": "/uc-info?uid=UID&key=RAM-SAGAR",
+        "example": "/uc-info?uid=2084018498&key=RAM-SAGAR",
     })
 
 # ===============================
